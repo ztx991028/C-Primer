@@ -1,0 +1,36 @@
+//从数组中找到第一大和第二大的值，不使用排序
+#include <stdio.h>
+
+void swap(int* x, int* y) {
+    int t = *x;
+    *x = *y;
+    *y = t;
+}
+    void insertsort(int arr[],int len){
+        int first=arr[0];
+        int secend=arr[0];
+        for (int i = 0; i < len-1; i++)
+        {
+            if (arr[i]>first)
+            {
+                swap(&arr[i], &first);
+            }
+        }
+        for (int i = 0; i < len-1; i++)
+        {
+            if (secend < arr[i] && arr[i] < first) {
+                swap(&arr[i], &secend);
+            }
+        }
+        printf("%d ", first);
+        printf("%d ", secend);
+    }
+int main() {
+    int arr[] = {2,5,6,4,3,8,7,9,1,123,32,44,2323,2314,56,775,75,7345,241,24,123,123,123,124,234,23,523,532,523,413};
+    int len = sizeof(arr) / sizeof(int);
+    insertsort(arr,len);
+   // for(int i = 0; i < len; i++){
+   //     printf("%d ", arr[i]);
+   // }
+    return 0;
+}
